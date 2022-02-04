@@ -9,9 +9,9 @@ class RetrofitInstance {
 
         .baseUrl("http://www.omdbapi.com/") //base url for the api call
         .addConverterFactory(GsonConverterFactory.create()) //converts the json data into a java class
-        .build() //creates the retrofit instance
+        .build() //builds the retrofit instance
 
     val movieService: MovieService by lazy {
-        retrofit.create()
+        retrofit.create() //creates retrofit instance
     }
 }

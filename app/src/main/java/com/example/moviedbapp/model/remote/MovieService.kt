@@ -18,7 +18,7 @@ interface MovieService {
     suspend fun getMovies (
         @Query("apikey") key : String, //api key query required for api calls
         @Query("t") title : String //title query to search for
-    ) : Movie //
+    ) : Movie //returns Movie data class
 
 
 }
