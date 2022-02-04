@@ -1,6 +1,5 @@
 package com.example.moviedbapp.model.remote
 
-import com.example.moviedbapp.model.resource.Movie
 import retrofit2.http.GET
 import retrofit2.http.Query
 
@@ -17,7 +16,7 @@ interface MovieService {
     */
     suspend fun getMovies (
         @Query("apikey") key : String, //api key query required for api calls
-        @Query("t") title : String //title query to search for
+        @Query("s") title : String //title query to search for
     ) : Movie //returns Movie data class
 
 

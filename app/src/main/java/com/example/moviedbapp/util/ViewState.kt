@@ -1,7 +1,5 @@
 package com.example.moviedbapp.util
 
-import com.example.moviedbapp.model.resource.Movie
-
 sealed class ViewState { //sealed class so it cannot be inherited
 
 
