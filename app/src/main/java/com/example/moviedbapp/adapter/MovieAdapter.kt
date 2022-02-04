@@ -28,8 +28,8 @@ class MovieAdapter (private val movieSearch : List<Search>) : RecyclerView.Adapt
    class MovieViewHolder (private val binding: MovieItemBinding)
        : RecyclerView.ViewHolder(binding.root) {
         //func that runs for each item in the recyclerview
-           fun bindMovie (movie: Search) {
-
+           fun bindMovie (movie: Search) = with(binding) {
+                tvTitle.text = movie.title
            }
 
         //instantiates and inflates the viewbinding
