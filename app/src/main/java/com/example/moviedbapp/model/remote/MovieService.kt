@@ -10,11 +10,11 @@ interface MovieService {
         const val API_KEY = "2c4cd2cb" //api key needed for api calls
     }
 
-    @GET //GET request to retrieve data from the api
 
-    /* suspend function to make the api call for movie searches
-       has to run in a coroutine
-    */
+
+    //suspend function to make the api call for movie searches
+    //has to run in a coroutine
+    @GET(".") //GET request to retrieve data from the api
     suspend fun getMovies (
         @Query("apikey") key : String, //api key query required for api calls
         @Query("s") title : String //title query to search for

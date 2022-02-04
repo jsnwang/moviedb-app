@@ -11,6 +11,7 @@ import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
+import com.example.moviedbapp.adapter.MovieAdapter
 import com.example.moviedbapp.databinding.FragmentHomeBinding
 import com.example.moviedbapp.model.resource.Movie
 import com.example.moviedbapp.util.ViewState
@@ -54,6 +55,7 @@ class HomeFragment : Fragment(){
     private fun initObservers() = with(viewModel){
         lifecycleScope.launchWhenStarted{ //launch lifecycle coroutine
             state.collectLatest { state -> //collect the stateflow data
+                Log.d("state", state.toString())
                 binding.loader.isVisible = state is ViewState.Loading //Makes loader visible if ViewState is Loading
                 if (state is ViewState.Success) handleSuccess(state.movie)
                 if (state is ViewState.Error) handleError(state.error)
@@ -62,7 +64,8 @@ class HomeFragment : Fragment(){
     }
 
     private fun handleSuccess(movie: Movie) {
-
+        Log.d("movies", movie.toString())
+        binding.rvMovies.adapter = MovieAdapter(movie.search)
     }
 
     private fun handleError(error: String) {
