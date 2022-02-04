@@ -19,8 +19,6 @@ class MovieViewModel : ViewModel() {
     calls the getMovies() function in the model and sets the ViewState to success or error
      */
     fun movieSearch(title: String) {
-
-
         viewModelScope.launch { //launch coroutine
             val state = try {  //state is set to success or fail depending on if the trycatch block fails or not
                 val movies = MovieModel.getMovies(title) //gets the movies by using the provided string as a search query

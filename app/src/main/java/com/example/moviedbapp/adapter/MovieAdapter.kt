@@ -1,4 +1,4 @@
-package com.example.moviedbapp.model.adapter
+package com.example.moviedbapp.adapter
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
@@ -9,12 +9,15 @@ import com.example.moviedbapp.model.resource.Search
 
 class MovieAdapter (private val movieSearch : List<Search>) : RecyclerView.Adapter<MovieAdapter.MovieViewHolder>(){
 
+    //instantiates the viewbinding when the view is created
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int)
         = MovieViewHolder.newInstance(parent)
 
+    //displays data at specified position
     override fun onBindViewHolder(holder: MovieViewHolder, position: Int)
         = holder.bindMovie(movieSearch[position])
 
+    //returns the total number of items in the recyclerview
     override fun getItemCount()
         = movieSearch.size
 
@@ -29,6 +32,7 @@ class MovieAdapter (private val movieSearch : List<Search>) : RecyclerView.Adapt
 
            }
 
+        //instantiates and inflates the viewbinding
        companion object{
            fun newInstance(parent: ViewGroup) = MovieItemBinding.inflate(
                LayoutInflater.from(parent.context), parent, false)

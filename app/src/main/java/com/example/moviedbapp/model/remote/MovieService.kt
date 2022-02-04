@@ -1,5 +1,6 @@
 package com.example.moviedbapp.model.remote
 
+import com.example.moviedbapp.model.resource.Movie
 import retrofit2.http.GET
 import retrofit2.http.Query
 
