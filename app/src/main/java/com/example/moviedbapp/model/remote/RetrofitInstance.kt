@@ -11,7 +11,7 @@ class RetrofitInstance {
         .addConverterFactory(GsonConverterFactory.create()) //converts the json data into a java class
         .build() //creates the retrofit instance
 
-//    val movieService: WeatherService by lazy {
-//        retrofit.create()
-//    }
+    val movieService: MovieService by lazy {
+        retrofit.create()
+    }
 }
