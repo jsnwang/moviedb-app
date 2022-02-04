@@ -7,7 +7,17 @@ import com.example.moviedbapp.databinding.FragmentHomeBinding
 import com.example.moviedbapp.databinding.MovieItemBinding
 import com.example.moviedbapp.model.resource.Search
 
-class MovieAdapter (private val movieSearch : List<Search>) {
+class MovieAdapter (private val movieSearch : List<Search>) : RecyclerView.Adapter<MovieAdapter.MovieViewHolder>(){
+
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int)
+        = MovieViewHolder.newInstance(parent)
+
+    override fun onBindViewHolder(holder: MovieViewHolder, position: Int)
+        = holder.bindMovie(movieSearch[position])
+
+    override fun getItemCount()
+        = movieSearch.size
+
 
 
 
