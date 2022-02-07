@@ -6,7 +6,6 @@ import retrofit2.create
 
 class RetrofitInstance {
     private val retrofit = Retrofit.Builder()
-
         .baseUrl("http://www.omdbapi.com/") //base url for the api call
         .addConverterFactory(GsonConverterFactory.create()) //converts the json data into a java class
         .build() //builds the retrofit instance
