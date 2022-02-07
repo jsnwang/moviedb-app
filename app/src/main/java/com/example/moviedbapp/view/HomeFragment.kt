@@ -16,6 +16,7 @@ import com.example.moviedbapp.databinding.FragmentHomeBinding
 import com.example.moviedbapp.model.resource.Movie
 import com.example.moviedbapp.util.ViewState
 import com.example.moviedbapp.viewmodel.MovieViewModel
+import com.google.android.material.snackbar.Snackbar
 import kotlinx.coroutines.flow.collectLatest
 
 class HomeFragment : Fragment(){
@@ -49,7 +50,10 @@ class HomeFragment : Fragment(){
         svSearchbar.setOnQueryTextListener(object : SearchView.OnQueryTextListener{
             //runs when the query text is submitted
             override fun onQueryTextSubmit(query: String?): Boolean {
-                viewModel.movieSearch(query!!) //searches for movies based on the query provided
+                if (!query.isNullOrEmpty())
+                    viewModel.movieSearch(query)
+                else
+                    Snackbar.make(binding.root, "Search cannot be empty", Snackbar.LENGTH_SHORT).show()//searches for movies based on the query provided
                 return true
             }
 
@@ -78,7 +82,15 @@ class HomeFragment : Fragment(){
     private fun handleSuccess(movie: Movie) {
         Log.d("movies", movie.toString())
         //passes the movie data to the recyclerview adapter
-        binding.rvMovies.adapter = MovieAdapter(movie.search)
+        if(!movie.search.isNullOrEmpty())
+        {
+            binding.rvMovies.adapter = MovieAdapter(movie.search)
+        }
+        else
+        {
+            Snackbar.make(binding.root, "No Results", Snackbar.LENGTH_SHORT).show()
+        }
+
     }
 
     //runs when the ViewState is error

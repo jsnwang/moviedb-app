@@ -2,7 +2,9 @@ package com.example.moviedbapp.adapter
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
 import com.example.moviedbapp.databinding.FragmentHomeBinding
 import com.example.moviedbapp.databinding.MovieItemBinding
 import com.example.moviedbapp.model.resource.Search
@@ -29,7 +31,12 @@ class MovieAdapter (private val movieSearch : List<Search>) : RecyclerView.Adapt
        : RecyclerView.ViewHolder(binding.root) {
         //func that runs for each item in the recyclerview
            fun bindMovie (movie: Search) = with(binding) {
+
+                Glide.with(binding.root).load(movie.poster).override(200,300).into(ivPoster)
                 tvTitle.text = movie.title //sets the text of each movie to the movie title
+                tvYear.text = movie.year //sets the year of each list item
+
+
            }
 
         //instantiates and inflates the viewbinding
